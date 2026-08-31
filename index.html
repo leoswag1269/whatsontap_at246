@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Taproom — Beer List</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍺</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* =====================================================
+     1. THEME VARIABLES — change these to re-skin the whole site
+     ===================================================== */
+  :root{
+    --bg: #f3e7d3;
+    --bg-alt: #ece0c8;
+    --wood-dark: #3c2415;
+    --wood-mid: #6d4c33;
+    --amber: #c9822a;
+    --amber-dark: #a05f18;
+    --text: #2b1b12;
+    --text-muted: #6b5842;
+    --card-bg: #fffaf1;
+    --border: #d9c39f;
+    --shadow: 0 6px 16px rgba(60, 36, 21, 0.15);
+    --radius: 14px;
+  }
+
+  *{ box-sizing: border-box; }
+
+  body{
+    margin: 0;
+    background:
+      radial-gradient(circle at 20% 0%, rgba(201,130,42,0.10), transparent 45%),
+      var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.5;
+    padding-bottom: 3rem;
+  }
+
+  h1, h2, h3{
+    font-family: 'Fraunces', Georgia, serif;
+    margin: 0;
+  }
+
+  /* =====================================================
+     2. HEADER
+     ===================================================== */
+  .site-header{
+    background: var(--wood-dark);
+    color: #f3e7d3;
+    text-align: center;
+    padding: 3.5rem 1.5rem 3rem;
+    border-bottom: 6px solid var(--amber);
+  }
+
+  .site-header .eyebrow{
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    font-size: 0.75rem;
+    color: var(--amber);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .site-header h1{
+    font-size: clamp(2.2rem, 6vw, 3.4rem);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .site-header .tagline{
+    margin-top: 0.75rem;
+    color: #e4d3b8;
+    font-size: 1.05rem;
+  }
+
+  .site-header .updated{
+    margin-top: 1.25rem;
+    font-size: 0.8rem;
+    color: #b79a6f;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* =====================================================
+     3. LAYOUT / SECTIONS
+     ===================================================== */
+  main{
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+  }
+
+  .menu-section{
+    margin-top: 3rem;
+  }
+
+  .section-heading{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-heading h2{
+    font-size: 1.6rem;
+    color: var(--wood-dark);
+    white-space: nowrap;
+  }
+
+  .section-heading .rule{
+    height: 2px;
+    flex: 1;
+    background: repeating-linear-gradient(
+      90deg, var(--border), var(--border) 6px, transparent 6px, transparent 12px
+    );
+  }
+
+  .beer-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .empty-state{
+    padding: 2rem;
+    text-align: center;
+    color: var(--text-muted);
+    background: var(--bg-alt);
+    border: 1px dashed var(--border);
+    border-radius: var(--radius);
+    font-style: italic;
+  }
+
+  /* =====================================================
+     4. BEER CARDS
+     ===================================================== */
+  .beer-card{
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.25rem 1.25rem 1.4rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .beer-card .top-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .beer-card .name-block h3{
+    font-size: 1.2rem;
+    color: var(--wood-dark);
+    line-height: 1.25;
+  }
+
+  .beer-card .style{
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 0.15rem;
+  }
+
+  .badge{
+    flex-shrink: 0;
+    background: var(--amber);
+    color: #fff8ec;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.6rem;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .badge.alt{
+    background: var(--wood-mid);
+  }
+
+  .stat-row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    font-size: 0.8rem;
+    color: var(--wood-mid);
+    font-weight: 600;
+  }
+
+  .stat-row span b{
+    color: var(--amber-dark);
+    font-weight: 700;
+  }
+
+  .description{
+    font-size: 0.92rem;
+    color: var(--text);
+    opacity: 0.85;
+  }
+
+  .tag-row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.2rem;
+  }
+
+  .pill{
+    font-size: 0.7rem;
+    color: var(--amber-dark);
+    border: 1px solid var(--amber);
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  /* =====================================================
+     5. FOOTER
+     ===================================================== */
+  footer{
+    text-align: center;
+    margin-top: 3.5rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    padding: 0 1.5rem;
+  }
+
+  @media (max-width: 480px){
+    .site-header{ padding: 2.5rem 1.25rem 2rem; }
+    .section-heading h2{ font-size: 1.35rem; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="site-header">
+    <p class="eyebrow">Welcome to the</p>
+    <h1>Home Taproom</h1>
+    <p class="tagline">A running list of what's pouring at the house</p>
+    <p class="updated" id="updated-date"></p>
+  </header>
+
+  <main>
+    <section class="menu-section">
+      <div class="section-heading">
+        <h2>On Tap</h2>
+        <div class="rule"></div>
+      </div>
+      <div class="beer-grid" id="tap-grid"></div>
+    </section>
+
+    <section class="menu-section">
+      <div class="section-heading">
+        <h2>Bottles &amp; Cans</h2>
+        <div class="rule"></div>
+      </div>
+      <div class="beer-grid" id="bottle-grid"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Cheers! This menu is a draft and changes with whatever's actually in the kegerator.</p>
+  </footer>
+
+<script>
+  /* =====================================================
+     6. THE BEER LIST — edit this section only
+     =====================================================
+     TAP_LIST and BOTTLE_LIST are plain arrays of objects.
+     Add a new beer by copying an object below (including the
+     curly braces and comma) and filling in your own info.
+     Delete a beer by deleting its whole { ... } block.
+
+     Fields:
+       name        (required) — beer name
+       style       (required) — e.g. "West Coast IPA"
+       abv         (optional) — number, e.g. 6.8
+       ibu         (optional) — number, taps mostly
+       size        (optional) — bottles/cans, e.g. "12 oz" or "750 ml"
+       description (optional) — a line or two of tasting notes
+       tapNumber   (optional, TAP_LIST only) — shows as a "TAP 1" badge
+       tags        (optional) — array of short labels, e.g. ["Homebrew", "Seasonal"]
+  */
+
+  const TAP_LIST = [
+    {
+      name: "Azacca IPA",
+      style: "American India Pale Ale",
+      abv: 5.8,
+      ibu: 40,
+      tapNumber: 1,
+      description: "An All-Azacca IPA made as part of the BUZZ Great Hop Experiment. NZ Tropical hop character with a clean malt backbone.",
+      tags: ["Homebrew"]
+    },
+    {
+      name: "Succession Saison",
+      style: "American Saison",
+      abv: 6.0,
+      ibu: 26,
+      tapNumber: 2,
+      description: "A Saison made at Keith Hartwig's Succession Fermentory; a little bit wild but quite pleasantly mild",
+      tags: ["Homebrew"]
+    },
+    {
+      name: "Elderberry Cream Ale",
+      style: "Fruit Beer - Elderberry, Base: Cream Ale",
+      abv: 5.6,
+      ibu: 28,
+      tapNumber: 3,
+      description: "A fruited Cream Ale made with Amoretti Elderberry Extract syrup.",
+      tags: ["Homebrew"]
+    },
+    {
+      name: "Cherry Seltzer w/ 15mg caffeine per serving",
+      style: "NA Seltzer",
+      abv: 0.0,
+      ibu: 0,
+      tapNumber: 4,
+      description: "A seltzer with a little pick me up.",
+      tags: ["Year-Round"]
+    }
+  ];
+
+  const BOTTLE_LIST = [
+    {
+      name: "Placeholder Stout",
+      style: "Imperial Stout",
+      abv: 9.2,
+      size: "12 oz",
+      description: "Example entry — rich, roasty, a little boozy warmth on the finish.",
+      tags: ["Bottle-conditioned"]
+    }
+  ];
+
+  /* =====================================================
+     7. RENDERING — you shouldn't need to touch this
+     ===================================================== */
+  function statLine(beer){
+    const parts = [];
+    if (beer.abv != null) parts.push(`<span><b>${beer.abv}%</b> ABV</span>`);
+    if (beer.ibu != null) parts.push(`<span><b>${beer.ibu}</b> IBU</span>`);
+    if (beer.size) parts.push(`<span>${beer.size}</span>`);
+    return parts.length ? `<div class="stat-row">${parts.join("")}</div>` : "";
+  }
+
+  function tagRow(beer){
+    if (!beer.tags || !beer.tags.length) return "";
+    const pills = beer.tags.map(t => `<span class="pill">${t}</span>`).join("");
+    return `<div class="tag-row">${pills}</div>`;
+  }
+
+  function beerCard(beer, badgeText, badgeAlt){
+    return `
+      <article class="beer-card">
+        <div class="top-row">
+          <div class="name-block">
+            <h3>${beer.name}</h3>
+            <div class="style">${beer.style}</div>
+          </div>
+          <span class="badge${badgeAlt ? " alt" : ""}">${badgeText}</span>
+        </div>
+        ${statLine(beer)}
+        ${beer.description ? `<p class="description">${beer.description}</p>` : ""}
+        ${tagRow(beer)}
+      </article>
+    `;
+  }
+
+  function renderGrid(gridId, list, emptyMessage, badgeFn){
+    const grid = document.getElementById(gridId);
+    if (!list || !list.length){
+      grid.innerHTML = `<div class="empty-state">${emptyMessage}</div>`;
+      return;
+    }
+    grid.innerHTML = list.map(beer => {
+      const { text, alt } = badgeFn(beer);
+      return beerCard(beer, text, alt);
+    }).join("");
+  }
+
+  renderGrid("tap-grid", TAP_LIST, "Nothing's pouring right now — check back soon.", beer => ({
+    text: beer.tapNumber != null ? `Tap ${beer.tapNumber}` : "On Tap",
+    alt: false
+  }));
+
+  renderGrid("bottle-grid", BOTTLE_LIST, "The bottle shelf is empty at the moment.", beer => ({
+    text: "Bottle",
+    alt: true
+  }));
+
+  document.getElementById("updated-date").textContent =
+    "Last updated " + new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+</script>
+
+</body>
+</html>
