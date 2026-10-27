@@ -1,6 +1,6 @@
 # PRD — Home Tap Auto-Sync (Notion → taplist site)
 
-**Status:** DRAFT 1 — awaiting Leo's sign-off
+**Status:** APPROVED by Leo 2026-10-26 (Draft 2: Bottles database added to v1 scope)
 **Owner:** Leo · **Builder:** Claude Code
 **Date:** 2026-10-16
 **Repo:** `leoswag1269/whatsontap_at246` (public, served by GitHub Pages)
@@ -9,7 +9,7 @@
 
 ## 1. Problem
 
-The guest taplist (`index.html`) is edited by hand. Two JavaScript arrays (`TAP_LIST`, `BOTTLE_LIST`) hold the beers. The real source of truth now lives in Notion, in the Draught Hub: **Taps → Current Keg → Kegs → Recipe**. So every keg change means updating Notion *and* hand-editing HTML. In practice the site drifts out of date (the last commit is the August taplist).
+The guest taplist (`index.html`) is edited by hand. Two JavaScript arrays (`TAP_LIST`, `BOTTLE_LIST`) hold the beers. The real source of truth now lives in Notion, in the Draught Hub (**Taps → Current Keg → Kegs → Recipe**) and, since 2026-10-22, the **Bottles** database under Homebrew Hub Home. So every keg change means updating Notion *and* hand-editing HTML. In practice the site drifts out of date (the last commit is the August taplist).
 
 There is also a small bug. The "Last updated" line shows the *viewer's* date, not the date the list changed, so it always looks fresh even when it is stale.
 
@@ -19,7 +19,7 @@ Updating Notion is the *only* step. The public taplist follows automatically, an
 
 ## 3. Success criteria
 
-1. Assigning or clearing a keg on a tap in Notion shows on the live site within ~1 hour, with no manual step.
+1. Assigning or clearing a keg on a tap, or adding, removing or editing a bottle, in Notion shows on the live site within ~1 hour, with no manual step.
 2. Each real taplist change produces exactly **one** commit, with a human-readable message, for example: `Taplist: Keezer 2 → Elderberry Cream Ale; Picnic P3 cleared`.
 3. Edits in Notion that don't change what guests see produce **no** commit. This covers cleaning logs, volume checks and keg notes.
 4. The page shows **no private field** under any circumstances. An automated test enforces this (§7).
@@ -30,9 +30,10 @@ Updating Notion is the *only* step. The public taplist follows automatically, an
 ## 4. Scope
 
 ### In (v1)
-- A sync script that reads Taps, the linked Kegs, and the Recipes those kegs link to, all through the Notion API with **read-only** access.
+- A sync script that reads Taps, the linked Kegs, the Recipes those kegs link to, and the **Bottles** database, all through the Notion API with **read-only** access.
 - A generated data file `data/taplist.json`, holding whitelisted fields only, written in a stable order so diffs are clean.
-- `index.html` refactored to render from `data/taplist.json` (and `data/bottles.json`), with no hardcoded beer arrays.
+- A generated data file `data/bottles.json` (§5b). A manual snapshot was committed 2026-10-26; the sync replaces it.
+- `index.html` refactored to render from `data/taplist.json` and `data/bottles.json`, with no hardcoded beer arrays.
 - A GitHub Action that runs on a schedule (hourly) plus a manual trigger, and commits only when the content changed.
 - Unit tests built on fixture data. These include the privacy whitelist test and the change-detection test.
 - The "Last updated" fix.
@@ -41,7 +42,6 @@ Updating Notion is the *only* step. The public taplist follows automatically, an
 ### Out (v1)
 - Any **writes** to Notion.
 - Redesigning the page.
-- Automating the Bottles & Cans section. There's no Notion source for it, so it stays a hand-edited `data/bottles.json` (open question Q3).
 - Style-conformance visuals. These are designed for now (§6) and built in Milestone 3.
 - Moving off GitHub Pages, adding a custom domain, or adding auth.
 
@@ -66,6 +66,24 @@ Updating Notion is the *only* step. The public taplist follows automatically, an
 - From Kegs: `Notes`, `Volume Left`, `Disposition`, `Quality`, `Needs / Repair`, `Location`, cleaning fields, queue fields.
 - From Recipes: `Share With`, `Gemini URL`/`Gemini ID`, `Creator`, `Source URL`, `Flags`, all nutrition fields, and the page body.
 - From any database: Notion page URLs or IDs.
+
+## 5b. Bottles mapping (v1)
+
+**Which bottles appear:** Bottles rows with `Placeholder?` unchecked. If a `Guest Visible` checkbox is added (Q8), only checked rows are shown. Homebrew rows are listed first, then commercial; each group is sorted by name.
+
+| Site field | Source | Notes |
+|---|---|---|
+| Name | `Name` | |
+| Brewery | `Brewery / Brewer` | **Commercial rows only.** Homebrewers are private individuals, so their names are never published |
+| Style + BJCP code | `Style` | Split into a code and a name, e.g. `26B` and "Belgian Dubbel". "N/A (non-beer)" becomes "Non-beer"; "Specialty/Other" becomes "Specialty beer"; "Unknown" means no style is shown |
+| ABV | `ABV %` | Left out when empty |
+| Size, container | `Size`, `Container` | "Unknown" size is left out |
+| Country | `Country` | Commercial rows only; non-USA rows get an "Import" tag |
+| Tags | `Source` (Homebrew → "Homebrew"; Leo's own → "Brewed here"), cider styles (C1x) → "Cider" | |
+
+**Explicitly forbidden (test-enforced):** `Notes`, `Location`, `Quantity`, homebrewer names, placeholder rows, and Notion page URLs or IDs.
+
+The 2026-10-26 snapshot (`data/bottles.json`, 26 bottles) follows these rules exactly, so the generator's first output should match it apart from any Notion edits made since. That makes it a useful check.
 
 ## 6. Designing for Milestone 3 now: "how true to style"
 
@@ -98,24 +116,24 @@ Only the numbers are needed. Keep any guideline prose in your own words, since t
 ## 7. Architecture
 
 ```
-Notion (Taps, Kegs, Recipes) ──read-only API──▶ scripts/sync.py
+Notion (Taps, Kegs, Recipes, Bottles) ──read-only API──▶ scripts/sync.py
         ▲                                             │ writes (only if content changed)
         │                                             ▼
-   you edit here                             data/taplist.json ──▶ index.html (fetches JSON) ──▶ GitHub Pages
+   you edit here               data/taplist.json + data/bottles.json ──▶ index.html (fetches JSON) ──▶ GitHub Pages
                                                       │
                                    GitHub Action (hourly + manual) commits with a changeover message
 ```
 
 - **Language:** Python 3, **standard library only**. No dependencies to install or update.
 - **Secrets:** the Notion token is stored as GitHub secret `NOTION_TOKEN`. The database IDs are stored as GitHub repository *variables*, not in code. The token never appears in code, logs, fixtures or commits.
-- **Notion integration:** an internal integration with **Read content** capability only. It is shared with exactly three databases: Taps, Kegs, Recipes.
+- **Notion integration:** an internal integration with **Read content** capability only. It is shared with exactly four databases: Taps, Kegs, Recipes, Bottles.
 - **Change detection:** the script hashes the guest-visible content, with the timestamp excluded. If the hash matches the committed file, it writes nothing. That makes rule 3 of §3 hold.
 - **Commit messages:** generated from the diff, listing which taps changed and what changed on each.
 - **Failure behavior:** if Notion is unreachable or returns errors, the script exits non-zero and changes nothing. The live site keeps showing the last good list. A failed run emails Leo by default through GitHub's own notifications.
 - **Tests (`tests/`):**
   - (a) mapping from fixture API responses
   - (b) **privacy test:** fixtures seed every forbidden field with a sentinel string such as `PRIVATE_SENTINEL`, and the test asserts it appears nowhere in the output
-  - (c) cleaner kegs are excluded
+  - (c) cleaner kegs and placeholder bottles are excluded
   - (d) empty taplist renders the empty state
   - (e) no-op runs produce no write
   - (f) commit-message generation
@@ -125,7 +143,7 @@ Notion (Taps, Kegs, Recipes) ──read-only API──▶ scripts/sync.py
 
 | # | Milestone | Done when |
 |---|---|---|
-| 1 | Sync script + JSON + tests (fixtures only) | `python -m unittest` passes, including the privacy test; PR opened |
+| 1 | Sync script + JSON + tests (fixtures only) | `python -m unittest` passes, including the privacy test for taps and bottles; PR opened |
 | 2 | Page reads JSON + Action wired + README | Local preview screenshot from fixture data matches today's look; PR merged; first manual live run succeeds |
 | 3 | Style conformance | Your `style-guidelines.md` exists, measured OG/FG fields are added in Notion, and the gauges render for at least one beer |
 
@@ -134,8 +152,8 @@ You only need to act at the start of Milestone 2 (secrets and variables) and Mil
 ## 9. Your setup tasks (one time, ~30 min)
 
 1. Create a Notion internal integration with the Read content capability only, and copy its token.
-2. Share **Taps**, **Kegs**, and **Recipes** with the integration. Do not share LifeOS as a whole.
-3. In GitHub, go to repo **Settings → Secrets and variables → Actions**. Add secret `NOTION_TOKEN`, then add variables `TAPS_DB_ID`, `KEGS_DB_ID`, `RECIPES_DB_ID`. Claude will give you the exact values.
+2. Share **Taps**, **Kegs**, **Recipes**, and **Bottles** with the integration. Do not share LifeOS as a whole.
+3. In GitHub, go to repo **Settings → Secrets and variables → Actions**. Add secret `NOTION_TOKEN`, then add variables `TAPS_DB_ID`, `KEGS_DB_ID`, `RECIPES_DB_ID`, `BOTTLES_DB_ID`. Claude will give you the exact values.
 4. In Notion, add `Guest Notes` (text) to Kegs. Optionally add `OG (measured)` / `FG (measured)` now as well.
 5. Finish keg labeling, then make sure every keg on a tap has `Contents`, `BJCP Style` and `ABV %` filled in.
 
@@ -143,14 +161,15 @@ You only need to act at the start of Milestone 2 (secrets and variables) and Mil
 
 - **Q1 — Tap labels for guests:** show the internal names ("Keezer 2", "Picnic P3") or a simplified number? [Show the Notion `Tap` name as is. Renaming happens in Notion, which keeps one source of truth.]
 - **Q2 — Description source:** add a `Guest Notes` field to Kegs, or skip descriptions? [Add it. The current site's descriptions are its best feature, and `Notes` is full of private details like dump candidates and volumes.] Add a `Display Name` override too? [Not yet. `Contents` reads fine.]
-- **Q3 — Bottles & Cans:** keep it as a hand-edited `data/bottles.json`, or remove the section? [Keep it, hand-edited. It's rarely changed.]
+- **Q3 — Bottles & Cans:** RESOLVED 2026-10-26. Synced from the Notion Bottles database in v1 (§5b).
 - **Q4 — Show kegged date / beer age to guests?** [Yes, as month and year only.]
 - **Q5 — Picnic taps:** they're portable. Should they show on the house taplist when in use? [Yes; they're only listed when a keg is assigned.]
 - **Q6 — Sync frequency:** hourly is plenty, and GitHub's scheduler can lag a few minutes. [Hourly plus the manual button.]
+- **Q8 — Cellar rarities:** should every identified bottle be public, or only ones marked `Guest Visible`? Rare bottles like Westvleteren 12, the 2013 Manneken-Penn, the 2015 Mash and the De Cam lambic are currently listed. [Add a `Guest Visible` checkbox to Bottles. The sync shows all non-placeholder rows until the field exists, then respects it.]
 - **Q7 — Milestone 3 style labels:** BJCP 2021 codes as the canonical key? [Yes. Your Cicerone work and BeerSmith both speak BJCP.]
 
 ## 11. Risks
 
-- **Public repo, private Notion.** This is mitigated by the field whitelist (an allow-list, not a block-list), the sentinel privacy test, and the read-only integration scoped to three databases.
+- **Public repo, private Notion.** This is mitigated by the field whitelist (an allow-list, not a block-list), the sentinel privacy test, and the read-only integration scoped to four databases.
 - **Notion API changes.** The script pins an API version header; Claude Code verifies the current version against Notion's docs at build time.
 - **Data quality.** Empty or messy fields render as gaps, not errors. The README will list which Notion fields drive what.
