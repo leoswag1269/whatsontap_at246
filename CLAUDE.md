@@ -15,7 +15,7 @@ A public guest taplist for Leo's home bar, served by GitHub Pages. The source of
 - `.github/workflows/sync.yml`: hourly and manual sync.
 
 ## Hard rules
-1. **Privacy allow-list.** Only fields listed in PRD §5 may reach any file in this repo. Add a field only with Leo's explicit approval, and add it to the privacy test in the same change. Never output Kegs `Notes`, volumes, disposition, quality, repairs, locations, any Recipes personal/sharing/Gemini/nutrition fields, or Notion page URLs or IDs.
+1. **Privacy allow-list.** Only fields listed in PRD §5 (taps) and §5b (bottles) may reach any file in this repo. Add a field only with Leo's explicit approval, and add it to the privacy test in the same change. Never output Kegs `Notes`, volumes, disposition, quality, repairs, locations, any Recipes personal/sharing/Gemini/nutrition fields; Bottles `Notes`, `Location`, `Quantity` or homebrewer names; or Notion page URLs or IDs.
 2. **No secrets in the repo.** The Notion token lives only in GitHub secret `NOTION_TOKEN`. Database IDs live only in Actions variables. Never print them, put them in fixtures, or commit `.env` files.
 3. **Notion is read-only.** Never write to Notion from this project.
 4. **Git flow.** Work on a branch and open a PR. Never push to `main`, force-push, rewrite history, or delete branches you didn't create.
