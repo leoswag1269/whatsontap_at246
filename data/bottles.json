@@ -1,0 +1,287 @@
+{
+  "source": "Notion Bottles database (manual snapshot)",
+  "snapshot_date": "2026-10-26",
+  "bottles": [
+    {
+      "name": "A Hauch vom Rauch (Rauchweizen)",
+      "style": "Classic Style Smoked Beer",
+      "bjcp": "32A",
+      "abv": 5.25,
+      "size": "12 oz",
+      "container": "Bottle",
+      "tags": [
+        "Homebrew"
+      ]
+    },
+    {
+      "name": "Apple Cider",
+      "style": "New World Cider",
+      "bjcp": "C1A",
+      "abv": 6.5,
+      "size": "12 oz",
+      "container": "Bottle",
+      "tags": [
+        "Homebrew",
+        "Cider"
+      ]
+    },
+    {
+      "name": "Black Barleywine",
+      "style": "English Barley Wine",
+      "bjcp": "17D",
+      "abv": 9.4,
+      "size": "12 oz",
+      "container": "Bottle",
+      "tags": [
+        "Homebrew"
+      ]
+    },
+    {
+      "name": "Bulldog's Scottish Wee Heavy",
+      "style": "Wee Heavy",
+      "bjcp": "17C",
+      "size": "12 oz",
+      "container": "Bottle",
+      "tags": [
+        "Homebrew"
+      ]
+    },
+    {
+      "name": "Bulldog's Summer Twisted Shandy",
+      "style": "Specialty beer",
+      "abv": 6.3,
+      "size": "12 oz",
+      "container": "Bottle",
+      "tags": [
+        "Homebrew"
+      ]
+    },
+    {
+      "name": "Fireside Lager (Rauch Schwarze Bock)",
+      "style": "Specialty Smoked Beer",
+      "bjcp": "32B",
+      "abv": 7.7,
+      "size": "12 oz",
+      "container": "Bottle",
+      "tags": [
+        "Homebrew"
+      ]
+    },
+    {
+      "name": "Here Comes the Sun Summer Ale",
+      "style": "British Golden Ale",
+      "bjcp": "12A",
+      "abv": 3.7,
+      "size": "12 oz",
+      "container": "Bottle",
+      "tags": [
+        "Homebrew"
+      ]
+    },
+    {
+      "name": "Holiday Golden Ale",
+      "style": "Winter Seasonal Beer",
+      "bjcp": "30C",
+      "abv": 9.9,
+      "size": "12 oz",
+      "container": "Bottle",
+      "tags": [
+        "Homebrew"
+      ]
+    },
+    {
+      "name": "Saison",
+      "style": "Saison",
+      "bjcp": "25B",
+      "abv": 7.2,
+      "size": "12 oz",
+      "container": "Bottle",
+      "tags": [
+        "Homebrew"
+      ]
+    },
+    {
+      "name": "Super Saison (L'effet papillon)",
+      "style": "Saison",
+      "bjcp": "25B",
+      "abv": 8.4,
+      "size": "12 oz",
+      "container": "Bottle",
+      "tags": [
+        "Brewed here"
+      ]
+    },
+    {
+      "name": "Dernière Volonté",
+      "brewery": "Dieu du Ciel!",
+      "style": "Belgian Blond Ale",
+      "bjcp": "25A",
+      "abv": 7,
+      "size": "341 ml",
+      "container": "Bottle",
+      "country": "Canada",
+      "tags": [
+        "Import"
+      ]
+    },
+    {
+      "name": "Fruition",
+      "brewery": "Braeloch Brewing",
+      "style": "New Zealand Pilsner",
+      "bjcp": "X5",
+      "size": "16 oz",
+      "container": "Can",
+      "country": "USA"
+    },
+    {
+      "name": "High Noon Cranberry",
+      "brewery": "High Noon",
+      "style": "Non-beer",
+      "size": "355 ml",
+      "container": "Can",
+      "country": "USA"
+    },
+    {
+      "name": "Intinction (Merlot)",
+      "brewery": "Russian River Brewing Co.",
+      "style": "Wild Specialty Beer",
+      "bjcp": "28C",
+      "abv": 7,
+      "size": "375 ml",
+      "container": "Bottle",
+      "country": "USA"
+    },
+    {
+      "name": "Manneken-Penn",
+      "brewery": "Brasserie de la Senne × Weyerbacher",
+      "style": "Belgian Dubbel",
+      "bjcp": "26B",
+      "abv": 7.5,
+      "size": "330 ml",
+      "container": "Bottle",
+      "country": "Belgium",
+      "tags": [
+        "Import"
+      ]
+    },
+    {
+      "name": "Mash (2015)",
+      "brewery": "The Bruery",
+      "style": "Specialty Wood-Aged Beer",
+      "bjcp": "33B",
+      "abv": 13.3,
+      "size": "750 ml",
+      "container": "Bottle",
+      "country": "USA"
+    },
+    {
+      "name": "Meriwether",
+      "brewery": "Perennial Artisan Ales × The Commons Brewery",
+      "style": "Saison",
+      "bjcp": "25B",
+      "abv": 6,
+      "size": "750 ml",
+      "container": "Bottle",
+      "country": "USA"
+    },
+    {
+      "name": "No Ka 'Oï",
+      "brewery": "Jolly Pumpkin Artisan Ales × Anchorage Brewing",
+      "style": "Wild Specialty Beer",
+      "bjcp": "28C",
+      "abv": 6.3,
+      "size": "750 ml",
+      "container": "Bottle",
+      "country": "USA"
+    },
+    {
+      "name": "Nora",
+      "brewery": "Baladin",
+      "style": "Spice Herb or Vegetable Beer",
+      "bjcp": "30A",
+      "abv": 6.8,
+      "size": "330 ml",
+      "container": "Bottle",
+      "country": "Italy",
+      "tags": [
+        "Import"
+      ]
+    },
+    {
+      "name": "Oude Lambiek (3 jaar oud)",
+      "brewery": "Geuzestekerij De Cam",
+      "style": "Lambic",
+      "bjcp": "23D",
+      "size": "750 ml",
+      "container": "Bottle",
+      "country": "Belgium",
+      "tags": [
+        "Import"
+      ]
+    },
+    {
+      "name": "Sierra Nevada Pils",
+      "brewery": "Sierra Nevada Brewing Co.",
+      "style": "German Pils",
+      "bjcp": "5D",
+      "size": "12 oz",
+      "container": "Can",
+      "country": "USA"
+    },
+    {
+      "name": "Slow Pour Pils",
+      "brewery": "Bierstadt Lagerhaus",
+      "style": "German Pils",
+      "bjcp": "5D",
+      "abv": 4.99,
+      "size": "16 oz",
+      "container": "Can",
+      "country": "USA"
+    },
+    {
+      "name": "The Mad Elf",
+      "brewery": "Tröegs Independent Brewing",
+      "style": "Winter Seasonal Beer",
+      "bjcp": "30C",
+      "abv": 11,
+      "size": "12 oz",
+      "container": "Bottle",
+      "country": "USA"
+    },
+    {
+      "name": "Twisted Tea Rocket Pop",
+      "brewery": "Twisted Tea",
+      "style": "Non-beer",
+      "abv": 5,
+      "size": "12 oz",
+      "container": "Can",
+      "country": "USA"
+    },
+    {
+      "name": "Westvleteren 12",
+      "brewery": "Sint-Sixtusabdij Westvleteren",
+      "style": "Belgian Dark Strong Ale",
+      "bjcp": "26D",
+      "abv": 10.2,
+      "size": "330 ml",
+      "container": "Bottle",
+      "country": "Belgium",
+      "tags": [
+        "Import"
+      ]
+    },
+    {
+      "name": "Zinnebir",
+      "brewery": "Brasserie de la Senne",
+      "style": "Belgian Pale Ale",
+      "bjcp": "24B",
+      "abv": 6,
+      "size": "330 ml",
+      "container": "Bottle",
+      "country": "Belgium",
+      "tags": [
+        "Import"
+      ]
+    }
+  ]
+}
