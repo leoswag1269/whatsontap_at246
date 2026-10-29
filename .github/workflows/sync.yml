@@ -1,0 +1,46 @@
+name: Sync taplist from Notion
+
+on:
+  schedule:
+    - cron: "17 * * * *"   # hourly, off the top of the hour
+  workflow_dispatch:        # the "Run workflow" button
+
+# Needed to commit data/*.json. Nothing else is granted.
+permissions:
+  contents: write
+
+# Never run two syncs at once.
+concurrency:
+  group: sync-taplist
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Run tests
+        run: python3 -m unittest discover tests
+
+      - name: Sync from Notion
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          TAPS_DB_ID: ${{ vars.TAPS_DB_ID }}
+          KEGS_DB_ID: ${{ vars.KEGS_DB_ID }}
+          RECIPES_DB_ID: ${{ vars.RECIPES_DB_ID }}
+          BOTTLES_DB_ID: ${{ vars.BOTTLES_DB_ID }}
+        run: python3 scripts/sync.py --message-file "$RUNNER_TEMP/commit-message.txt"
+
+      # The message file exists only when guest-visible content changed.
+      - name: Commit changes
+        run: |
+          if [ ! -f "$RUNNER_TEMP/commit-message.txt" ]; then
+            echo "No guest-visible changes; nothing to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/taplist.json data/bottles.json
+          git commit -F "$RUNNER_TEMP/commit-message.txt"
+          git push

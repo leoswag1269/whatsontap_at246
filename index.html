@@ -274,89 +274,54 @@
 
 <script>
   /* =====================================================
-     6. THE BEER LIST — edit this section only
+     6. THE BEER LIST — generated, do not edit here
      =====================================================
-     TAP_LIST and BOTTLE_LIST are plain arrays of objects.
-     Add a new beer by copying an object below (including the
-     curly braces and comma) and filling in your own info.
-     Delete a beer by deleting its whole { ... } block.
-
-     Fields:
-       name        (required) — beer name
-       style       (required) — e.g. "West Coast IPA"
-       abv         (optional) — number, e.g. 6.8
-       ibu         (optional) — number, taps mostly
-       size        (optional) — bottles/cans, e.g. "12 oz" or "750 ml"
-       description (optional) — a line or two of tasting notes
-       tapNumber   (optional, TAP_LIST only) — shows as a "TAP 1" badge
-       tags        (optional) — array of short labels, e.g. ["Homebrew", "Seasonal"]
+     The beers come from data/taplist.json and data/bottles.json,
+     which scripts/sync.py regenerates from Notion. Change a beer
+     in Notion, not in this file. See README.md.
   */
 
-  const TAP_LIST = [
-    {
-      name: "Azacca IPA",
-      style: "American India Pale Ale",
-      abv: 5.8,
-      ibu: 40,
-      tapNumber: 1,
-      description: "An All-Azacca IPA made as part of the BUZZ Great Hop Experiment. NZ Tropical hop character with a clean malt backbone.",
-      tags: ["Homebrew"]
-    },
-    {
-      name: "Succession Saison",
-      style: "American Saison",
-      abv: 6.0,
-      ibu: 26,
-      tapNumber: 2,
-      description: "A Saison made at Keith Hartwig's Succession Fermentory; a little bit wild but quite pleasantly mild",
-      tags: ["Homebrew"]
-    },
-    {
-      name: "Elderberry Cream Ale",
-      style: "Fruit Beer - Elderberry, Base: Cream Ale",
-      abv: 5.6,
-      ibu: 28,
-      tapNumber: 3,
-      description: "A fruited Cream Ale made with Amoretti Elderberry Extract syrup.",
-      tags: ["Homebrew"]
-    },
-    {
-      name: "Cherry Seltzer w/ 15mg caffeine per serving",
-      style: "NA Seltzer",
-      abv: 0.0,
-      ibu: 0,
-      tapNumber: 4,
-      description: "A seltzer with a little pick me up.",
-      tags: ["Year-Round"]
-    }
-  ];
-
-  const BOTTLE_LIST = [
-    {
-      name: "Placeholder Stout",
-      style: "Imperial Stout",
-      abv: 9.2,
-      size: "12 oz",
-      description: "Example entry — rich, roasty, a little boozy warmth on the finish.",
-      tags: ["Bottle-conditioned"]
-    }
-  ];
-
   /* =====================================================
-     7. RENDERING — you shouldn't need to touch this
+     7. RENDERING
      ===================================================== */
+  const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+  // Data is Notion-sourced text, so every string is escaped before it reaches innerHTML.
+  function esc(value){
+    return String(value).replace(/[&<>"']/g, c => (
+      { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]
+    ));
+  }
+
+  function statValue(stat){
+    return stat && typeof stat === "object" ? stat.value : stat;
+  }
+
+  function keggedLabel(kegged){
+    const m = /^(\d{4})-(\d{2})/.exec(kegged || "");
+    return m && MONTHS[+m[2] - 1] ? `Kegged ${MONTHS[+m[2] - 1]} ${m[1]}` : "";
+  }
+
   function statLine(beer){
     const parts = [];
-    if (beer.abv != null) parts.push(`<span><b>${beer.abv}%</b> ABV</span>`);
-    if (beer.ibu != null) parts.push(`<span><b>${beer.ibu}</b> IBU</span>`);
-    if (beer.size) parts.push(`<span>${beer.size}</span>`);
+    const abv = statValue(beer.abv), ibu = statValue(beer.ibu);
+    if (abv != null) parts.push(`<span><b>${esc(abv)}%</b> ABV</span>`);
+    if (ibu != null) parts.push(`<span><b>${esc(ibu)}</b> IBU</span>`);
+    if (beer.size) parts.push(`<span>${esc(beer.size)}</span>`);
+    const kegged = keggedLabel(beer.kegged);
+    if (kegged) parts.push(`<span>${esc(kegged)}</span>`);
     return parts.length ? `<div class="stat-row">${parts.join("")}</div>` : "";
   }
 
   function tagRow(beer){
     if (!beer.tags || !beer.tags.length) return "";
-    const pills = beer.tags.map(t => `<span class="pill">${t}</span>`).join("");
+    const pills = beer.tags.map(t => `<span class="pill">${esc(t)}</span>`).join("");
     return `<div class="tag-row">${pills}</div>`;
+  }
+
+  function styleLine(beer){
+    const line = [beer.brewery, beer.style].filter(Boolean).join(" · ");
+    return line ? `<div class="style">${esc(line)}</div>` : "";
   }
 
   function beerCard(beer, badgeText, badgeAlt){
@@ -364,13 +329,13 @@
       <article class="beer-card">
         <div class="top-row">
           <div class="name-block">
-            <h3>${beer.name}</h3>
-            <div class="style">${beer.style}</div>
+            <h3>${esc(beer.name)}</h3>
+            ${styleLine(beer)}
           </div>
-          <span class="badge${badgeAlt ? " alt" : ""}">${badgeText}</span>
+          <span class="badge${badgeAlt ? " alt" : ""}">${esc(badgeText)}</span>
         </div>
         ${statLine(beer)}
-        ${beer.description ? `<p class="description">${beer.description}</p>` : ""}
+        ${beer.description ? `<p class="description">${esc(beer.description)}</p>` : ""}
         ${tagRow(beer)}
       </article>
     `;
@@ -379,7 +344,7 @@
   function renderGrid(gridId, list, emptyMessage, badgeFn){
     const grid = document.getElementById(gridId);
     if (!list || !list.length){
-      grid.innerHTML = `<div class="empty-state">${emptyMessage}</div>`;
+      grid.innerHTML = `<div class="empty-state">${esc(emptyMessage)}</div>`;
       return;
     }
     grid.innerHTML = list.map(beer => {
@@ -388,18 +353,43 @@
     }).join("");
   }
 
-  renderGrid("tap-grid", TAP_LIST, "Nothing's pouring right now — check back soon.", beer => ({
-    text: beer.tapNumber != null ? `Tap ${beer.tapNumber}` : "On Tap",
-    alt: false
-  }));
+  // A missing or broken file yields null, so that section shows its empty state.
+  async function loadJson(path){
+    try {
+      const res = await fetch(path, { cache: "no-cache" });
+      return res.ok ? await res.json() : null;
+    } catch (e) {
+      return null;
+    }
+  }
 
-  renderGrid("bottle-grid", BOTTLE_LIST, "The bottle shelf is empty at the moment.", beer => ({
-    text: "Bottle",
-    alt: true
-  }));
+  // "YYYY-MM-DD" parsed at local noon so US time zones don't show the day before.
+  function showUpdated(dateStr){
+    const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(dateStr || "");
+    const el = document.getElementById("updated-date");
+    if (!m){ el.hidden = true; return; }
+    const d = new Date(+m[1], +m[2] - 1, +m[3], 12);
+    el.textContent = "Last updated " + d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+  }
 
-  document.getElementById("updated-date").textContent =
-    "Last updated " + new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+  (async function init(){
+    const [taplist, bottles] = await Promise.all([
+      loadJson("data/taplist.json"),
+      loadJson("data/bottles.json")
+    ]);
+
+    renderGrid("tap-grid", taplist && taplist.taps, "Nothing's pouring right now — check back soon.", beer => ({
+      text: beer.tap || "On Tap",
+      alt: false
+    }));
+
+    renderGrid("bottle-grid", bottles && bottles.bottles, "The bottle shelf is empty at the moment.", beer => ({
+      text: beer.container || "Bottle",
+      alt: true
+    }));
+
+    showUpdated((taplist && taplist.updated) || (bottles && bottles.updated));
+  })();
 </script>
 
 </body>
