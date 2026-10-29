@@ -177,14 +177,14 @@
         "Source": {
           "type": "select",
           "select": {
-            "name": "Leo's own"
+            "name": "Homebrew"
           }
         },
         "Brewery / Brewer": {
           "type": "rich_text",
           "rich_text": [
             {
-              "plain_text": "PRIVATE_SENTINEL_leo"
+              "plain_text": "Leo"
             }
           ]
         },

@@ -53,9 +53,9 @@ class MappingTests(unittest.TestCase):
         self.taplist, self.bottles = built()
         self.taps = {t["tap"]: t for t in self.taplist["taps"]}
 
-    def test_tap_order_is_type_then_position(self):
+    def test_tap_order_is_through_wall_then_beermeister_then_picnic(self):
         self.assertEqual([t["tap"] for t in self.taplist["taps"]],
-                         ["Keezer 1", "Keezer 2", "Keezer 3", "Picnic P1", "Picnic P3"])
+                         ["Keezer 1", "Keezer 2", "Keezer 3", "Beermeister 1", "Picnic P1", "Picnic P3"])
 
     def test_keg_abv_is_measured_and_recipe_stats_are_recipe(self):
         t = self.taps["Keezer 1"]
@@ -89,6 +89,7 @@ class MappingTests(unittest.TestCase):
         self.assertEqual(self.taps["Keezer 3"]["tags"], ["Nitro", "Homebrew"])
         self.assertEqual(self.taps["Picnic P3"]["tags"], ["NA"])
         self.assertEqual(self.taps["Picnic P1"]["tags"], ["Coffee"])
+        self.assertEqual(self.taps["Beermeister 1"]["tags"], ["Wine"])
 
     def test_bottle_groups_and_order(self):
         names = [b["name"] for b in self.bottles["bottles"]]
@@ -105,6 +106,7 @@ class MappingTests(unittest.TestCase):
         by = {b["name"]: b for b in self.bottles["bottles"]}
         self.assertEqual(by["Apple Cider"]["tags"], ["Homebrew", "Cider"])
         self.assertEqual(by["Super Saison"]["tags"], ["Brewed here"])
+        self.assertNotIn("brewery", by["Super Saison"])
         self.assertEqual(by["Dernière Volonté"]["tags"], ["Import"])
         self.assertEqual(by["Odd Brew"]["tags"], ["Import"])
         self.assertNotIn("tags", by["Fruition"])  # USA commercial
@@ -164,6 +166,7 @@ class PrivacyTests(unittest.TestCase):
                      "gemini_url", "gemini_id", "creator", "source_url", "flags", "bottle_notes",
                      "bottle_location", "homebrewer", "tap_notes"):
             self.assertIn("PRIVATE_SENTINEL_" + name, raw)
+        self.assertIn("Volume Left (gal)", raw)
         self.assertIn("987.65", raw)    # Volume Left
         self.assertIn("424243", raw)    # Quantity
         self.assertIn("notion.so", raw)
@@ -173,7 +176,7 @@ class PrivacyTests(unittest.TestCase):
             taplist, bottles = built(version)
             blob = json.dumps([taplist, bottles], ensure_ascii=False)
             for forbidden in ("PRIVATE_SENTINEL", "987.65", "424242", "424243", "notion.so",
-                              "gemini", "example.com", "tap-", "keg-", "recipe-", "bottle-"):
+                              "gemini", "example.com", "Leo", "tap-", "keg-", "recipe-", "bottle-"):
                 self.assertNotIn(forbidden, blob, version)
             for s in strings([taplist, bottles]):
                 self.assertNotRegex(s, r"https?://")

@@ -37,8 +37,11 @@ BEVERAGE_TAGS = {
     "coffee": "Coffee",
     "wine": "Wine",
 }
-# Source values meaning "Leo brewed it". Anything else non-"homebrew" is commercial.
-OWN_SOURCES = {"brewed here", "leo's own", "leos own", "own", "mine"}
+# Bottles `Source` is "Commercial" or "Homebrew". A Homebrew row whose
+# `Brewery / Brewer` is Leo gets the "Brewed here" tag (the name itself is never output).
+OWN_BREWER_RE = re.compile(r"^\s*leo\b", re.I)
+# Tap Type groups in page order; unknown types sort last.
+TAP_TYPE_ORDER = ("through-wall", "beermeister", "picnic")
 
 BJCP_CODE = r"(?:C\d{1,2}[A-Z]?|X\d{1,2}|\d{1,2}[A-Z])"
 LEADING_CODE_RE = re.compile(r"^\s*(" + BJCP_CODE + r")\b[\s.:\-–—]*(.*)$", re.S)
@@ -201,6 +204,14 @@ def _is_cleaner(beverage_type):
     return "cleaner" in b or "sanitizer" in b
 
 
+def _tap_type_rank(tap_type):
+    t = (tap_type or "").lower()
+    for i, prefix in enumerate(TAP_TYPE_ORDER):
+        if t.startswith(prefix):
+            return i
+    return len(TAP_TYPE_ORDER)
+
+
 def build_taplist(taps, kegs, recipes):
     kegs_by_id = {k["id"]: k for k in kegs}
     recipes_by_id = {r["id"]: r for r in recipes}
@@ -250,7 +261,7 @@ def build_taplist(taps, kegs, recipes):
         if "name" not in rec:
             continue
         sort_key = (
-            text(field(tap, "Tap Type")) or "",
+            _tap_type_rank(text(field(tap, "Tap Type"))),
             number(field(tap, "Position")) if number(field(tap, "Position")) is not None else 10 ** 9,
             label or "",
         )
@@ -287,17 +298,17 @@ def build_bottles(rows):
         if not name:
             continue
         source = (text(field(row, "Source")) or "").lower()
-        is_own = source in OWN_SOURCES
-        is_homebrew = source == "homebrew" or is_own
+        is_homebrew = source == "homebrew"
+        is_own = is_homebrew and bool(OWN_BREWER_RE.match(text(field(row, "Brewery / Brewer")) or ""))
         code, style = _bottle_style(field(row, "Style"))
         size = text(field(row, "Size"))
         country = text(field(row, "Country"))
 
         tags = []
-        if source == "homebrew":
-            tags.append("Homebrew")
         if is_own:
             tags.append("Brewed here")
+        elif is_homebrew:
+            tags.append("Homebrew")
         if code and code.startswith("C1"):
             tags.append("Cider")
         if not is_homebrew and country and country.lower() not in ("usa", "us", "united states"):
