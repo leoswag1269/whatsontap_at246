@@ -1,0 +1,709 @@
+{
+  "object": "list",
+  "results": [
+    {
+      "object": "page",
+      "id": "bottle-1",
+      "url": "https://www.notion.so/fixture-bottle-1",
+      "properties": {
+        "Name": {
+          "type": "title",
+          "title": [
+            {
+              "plain_text": "Black Barleywine"
+            }
+          ]
+        },
+        "Style": {
+          "type": "select",
+          "select": {
+            "name": "17D English Barley Wine"
+          }
+        },
+        "Source": {
+          "type": "select",
+          "select": {
+            "name": "Homebrew"
+          }
+        },
+        "Brewery / Brewer": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_homebrewer"
+            }
+          ]
+        },
+        "ABV %": {
+          "type": "number",
+          "number": 9.4
+        },
+        "Size": {
+          "type": "select",
+          "select": {
+            "name": "12 oz"
+          }
+        },
+        "Container": {
+          "type": "select",
+          "select": {
+            "name": "Bottle"
+          }
+        },
+        "Country": {
+          "type": "select",
+          "select": null
+        },
+        "Placeholder?": {
+          "type": "checkbox",
+          "checkbox": false
+        },
+        "Notes": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_bottle_notes"
+            }
+          ]
+        },
+        "Location": {
+          "type": "select",
+          "select": {
+            "name": "PRIVATE_SENTINEL_bottle_location"
+          }
+        },
+        "Quantity": {
+          "type": "number",
+          "number": 424243
+        }
+      }
+    },
+    {
+      "object": "page",
+      "id": "bottle-2",
+      "url": "https://www.notion.so/fixture-bottle-2",
+      "properties": {
+        "Name": {
+          "type": "title",
+          "title": [
+            {
+              "plain_text": "Apple Cider"
+            }
+          ]
+        },
+        "Style": {
+          "type": "select",
+          "select": {
+            "name": "C1A New World Cider"
+          }
+        },
+        "Source": {
+          "type": "select",
+          "select": {
+            "name": "Homebrew"
+          }
+        },
+        "Brewery / Brewer": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_homebrewer"
+            }
+          ]
+        },
+        "ABV %": {
+          "type": "number",
+          "number": 6.5
+        },
+        "Size": {
+          "type": "select",
+          "select": {
+            "name": "12 oz"
+          }
+        },
+        "Container": {
+          "type": "select",
+          "select": {
+            "name": "Bottle"
+          }
+        },
+        "Country": {
+          "type": "select",
+          "select": null
+        },
+        "Placeholder?": {
+          "type": "checkbox",
+          "checkbox": false
+        },
+        "Notes": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_bottle_notes"
+            }
+          ]
+        },
+        "Location": {
+          "type": "select",
+          "select": {
+            "name": "PRIVATE_SENTINEL_bottle_location"
+          }
+        },
+        "Quantity": {
+          "type": "number",
+          "number": 424243
+        }
+      }
+    },
+    {
+      "object": "page",
+      "id": "bottle-3",
+      "url": "https://www.notion.so/fixture-bottle-3",
+      "properties": {
+        "Name": {
+          "type": "title",
+          "title": [
+            {
+              "plain_text": "Super Saison"
+            }
+          ]
+        },
+        "Style": {
+          "type": "select",
+          "select": {
+            "name": "25B Saison"
+          }
+        },
+        "Source": {
+          "type": "select",
+          "select": {
+            "name": "Leo's own"
+          }
+        },
+        "Brewery / Brewer": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_leo"
+            }
+          ]
+        },
+        "ABV %": {
+          "type": "number",
+          "number": 7.1
+        },
+        "Size": {
+          "type": "select",
+          "select": {
+            "name": "12 oz"
+          }
+        },
+        "Container": {
+          "type": "select",
+          "select": {
+            "name": "Bottle"
+          }
+        },
+        "Country": {
+          "type": "select",
+          "select": null
+        },
+        "Placeholder?": {
+          "type": "checkbox",
+          "checkbox": false
+        },
+        "Notes": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_bottle_notes"
+            }
+          ]
+        },
+        "Location": {
+          "type": "select",
+          "select": {
+            "name": "PRIVATE_SENTINEL_bottle_location"
+          }
+        },
+        "Quantity": {
+          "type": "number",
+          "number": 424243
+        }
+      }
+    },
+    {
+      "object": "page",
+      "id": "bottle-4",
+      "url": "https://www.notion.so/fixture-bottle-4",
+      "properties": {
+        "Name": {
+          "type": "title",
+          "title": [
+            {
+              "plain_text": "Fruition"
+            }
+          ]
+        },
+        "Style": {
+          "type": "select",
+          "select": {
+            "name": "X5 New Zealand Pilsner"
+          }
+        },
+        "Source": {
+          "type": "select",
+          "select": {
+            "name": "Commercial"
+          }
+        },
+        "Brewery / Brewer": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "Braeloch Brewing"
+            }
+          ]
+        },
+        "ABV %": {
+          "type": "number",
+          "number": null
+        },
+        "Size": {
+          "type": "select",
+          "select": {
+            "name": "16 oz"
+          }
+        },
+        "Container": {
+          "type": "select",
+          "select": {
+            "name": "Can"
+          }
+        },
+        "Country": {
+          "type": "select",
+          "select": {
+            "name": "USA"
+          }
+        },
+        "Placeholder?": {
+          "type": "checkbox",
+          "checkbox": false
+        },
+        "Notes": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_bottle_notes"
+            }
+          ]
+        },
+        "Location": {
+          "type": "select",
+          "select": {
+            "name": "PRIVATE_SENTINEL_bottle_location"
+          }
+        },
+        "Quantity": {
+          "type": "number",
+          "number": 424243
+        }
+      }
+    },
+    {
+      "object": "page",
+      "id": "bottle-5",
+      "url": "https://www.notion.so/fixture-bottle-5",
+      "properties": {
+        "Name": {
+          "type": "title",
+          "title": [
+            {
+              "plain_text": "Dernière Volonté"
+            }
+          ]
+        },
+        "Style": {
+          "type": "select",
+          "select": {
+            "name": "25A Belgian Blond Ale"
+          }
+        },
+        "Source": {
+          "type": "select",
+          "select": {
+            "name": "Commercial"
+          }
+        },
+        "Brewery / Brewer": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "Dieu du Ciel!"
+            }
+          ]
+        },
+        "ABV %": {
+          "type": "number",
+          "number": 7
+        },
+        "Size": {
+          "type": "select",
+          "select": {
+            "name": "341 ml"
+          }
+        },
+        "Container": {
+          "type": "select",
+          "select": {
+            "name": "Bottle"
+          }
+        },
+        "Country": {
+          "type": "select",
+          "select": {
+            "name": "Canada"
+          }
+        },
+        "Placeholder?": {
+          "type": "checkbox",
+          "checkbox": false
+        },
+        "Notes": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_bottle_notes"
+            }
+          ]
+        },
+        "Location": {
+          "type": "select",
+          "select": {
+            "name": "PRIVATE_SENTINEL_bottle_location"
+          }
+        },
+        "Quantity": {
+          "type": "number",
+          "number": 424243
+        }
+      }
+    },
+    {
+      "object": "page",
+      "id": "bottle-7",
+      "url": "https://www.notion.so/fixture-bottle-7",
+      "properties": {
+        "Name": {
+          "type": "title",
+          "title": [
+            {
+              "plain_text": "Hard Seltzer"
+            }
+          ]
+        },
+        "Style": {
+          "type": "select",
+          "select": {
+            "name": "N/A (non-beer)"
+          }
+        },
+        "Source": {
+          "type": "select",
+          "select": {
+            "name": "Commercial"
+          }
+        },
+        "Brewery / Brewer": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "Fizz Co"
+            }
+          ]
+        },
+        "ABV %": {
+          "type": "number",
+          "number": null
+        },
+        "Size": {
+          "type": "select",
+          "select": {
+            "name": "12 oz"
+          }
+        },
+        "Container": {
+          "type": "select",
+          "select": {
+            "name": "Bottle"
+          }
+        },
+        "Country": {
+          "type": "select",
+          "select": {
+            "name": "USA"
+          }
+        },
+        "Placeholder?": {
+          "type": "checkbox",
+          "checkbox": false
+        },
+        "Notes": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_bottle_notes"
+            }
+          ]
+        },
+        "Location": {
+          "type": "select",
+          "select": {
+            "name": "PRIVATE_SENTINEL_bottle_location"
+          }
+        },
+        "Quantity": {
+          "type": "number",
+          "number": 424243
+        }
+      }
+    },
+    {
+      "object": "page",
+      "id": "bottle-8",
+      "url": "https://www.notion.so/fixture-bottle-8",
+      "properties": {
+        "Name": {
+          "type": "title",
+          "title": [
+            {
+              "plain_text": "Odd Brew"
+            }
+          ]
+        },
+        "Style": {
+          "type": "select",
+          "select": {
+            "name": "Specialty/Other"
+          }
+        },
+        "Source": {
+          "type": "select",
+          "select": {
+            "name": "Commercial"
+          }
+        },
+        "Brewery / Brewer": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "Odd Co"
+            }
+          ]
+        },
+        "ABV %": {
+          "type": "number",
+          "number": null
+        },
+        "Size": {
+          "type": "select",
+          "select": {
+            "name": "12 oz"
+          }
+        },
+        "Container": {
+          "type": "select",
+          "select": {
+            "name": "Bottle"
+          }
+        },
+        "Country": {
+          "type": "select",
+          "select": {
+            "name": "Belgium"
+          }
+        },
+        "Placeholder?": {
+          "type": "checkbox",
+          "checkbox": false
+        },
+        "Notes": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_bottle_notes"
+            }
+          ]
+        },
+        "Location": {
+          "type": "select",
+          "select": {
+            "name": "PRIVATE_SENTINEL_bottle_location"
+          }
+        },
+        "Quantity": {
+          "type": "number",
+          "number": 424243
+        }
+      }
+    },
+    {
+      "object": "page",
+      "id": "bottle-9",
+      "url": "https://www.notion.so/fixture-bottle-9",
+      "properties": {
+        "Name": {
+          "type": "title",
+          "title": [
+            {
+              "plain_text": "Placeholder Stout"
+            }
+          ]
+        },
+        "Style": {
+          "type": "select",
+          "select": {
+            "name": "Imperial Stout"
+          }
+        },
+        "Source": {
+          "type": "select",
+          "select": {
+            "name": "Commercial"
+          }
+        },
+        "Brewery / Brewer": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_placeholder"
+            }
+          ]
+        },
+        "ABV %": {
+          "type": "number",
+          "number": null
+        },
+        "Size": {
+          "type": "select",
+          "select": {
+            "name": "12 oz"
+          }
+        },
+        "Container": {
+          "type": "select",
+          "select": {
+            "name": "Bottle"
+          }
+        },
+        "Country": {
+          "type": "select",
+          "select": null
+        },
+        "Placeholder?": {
+          "type": "checkbox",
+          "checkbox": true
+        },
+        "Notes": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_bottle_notes"
+            }
+          ]
+        },
+        "Location": {
+          "type": "select",
+          "select": {
+            "name": "PRIVATE_SENTINEL_bottle_location"
+          }
+        },
+        "Quantity": {
+          "type": "number",
+          "number": 424243
+        }
+      }
+    },
+    {
+      "object": "page",
+      "id": "bottle-10",
+      "url": "https://www.notion.so/fixture-bottle-10",
+      "properties": {
+        "Name": {
+          "type": "title",
+          "title": [
+            {
+              "plain_text": "Zwanze"
+            }
+          ]
+        },
+        "Style": {
+          "type": "select",
+          "select": {
+            "name": "23D Lambic"
+          }
+        },
+        "Source": {
+          "type": "select",
+          "select": {
+            "name": "Commercial"
+          }
+        },
+        "Brewery / Brewer": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "Cantillon"
+            }
+          ]
+        },
+        "ABV %": {
+          "type": "number",
+          "number": null
+        },
+        "Size": {
+          "type": "select",
+          "select": {
+            "name": "750 ml"
+          }
+        },
+        "Container": {
+          "type": "select",
+          "select": {
+            "name": "Bottle"
+          }
+        },
+        "Country": {
+          "type": "select",
+          "select": {
+            "name": "Belgium"
+          }
+        },
+        "Placeholder?": {
+          "type": "checkbox",
+          "checkbox": false
+        },
+        "Notes": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_bottle_notes"
+            }
+          ]
+        },
+        "Location": {
+          "type": "select",
+          "select": {
+            "name": "PRIVATE_SENTINEL_bottle_location"
+          }
+        },
+        "Quantity": {
+          "type": "number",
+          "number": 424243
+        }
+      }
+    }
+  ],
+  "has_more": false
+}

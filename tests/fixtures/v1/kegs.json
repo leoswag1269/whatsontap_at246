@@ -1,0 +1,615 @@
+{
+  "object": "list",
+  "results": [
+    {
+      "object": "page",
+      "id": "keg-1",
+      "url": "https://www.notion.so/fixture-keg-1",
+      "properties": {
+        "Contents": {
+          "type": "title",
+          "title": [
+            {
+              "plain_text": "Azacca IPA"
+            }
+          ]
+        },
+        "Beverage Type": {
+          "type": "select",
+          "select": {
+            "name": "Beer"
+          }
+        },
+        "Recipe": {
+          "type": "relation",
+          "relation": [
+            {
+              "id": "recipe-1"
+            }
+          ]
+        },
+        "BJCP Style": {
+          "type": "rich_text",
+          "rich_text": []
+        },
+        "ABV %": {
+          "type": "number",
+          "number": 5.8
+        },
+        "Kegged Date": {
+          "type": "date",
+          "date": {
+            "start": "2026-09-14"
+          }
+        },
+        "Guest Notes": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "An All-Azacca IPA with tropical hop character."
+            }
+          ]
+        },
+        "Notes": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_keg_notes"
+            }
+          ]
+        },
+        "Volume Left": {
+          "type": "number",
+          "number": 987.65
+        },
+        "Disposition": {
+          "type": "select",
+          "select": {
+            "name": "PRIVATE_SENTINEL_disposition"
+          }
+        },
+        "Quality": {
+          "type": "select",
+          "select": {
+            "name": "PRIVATE_SENTINEL_quality"
+          }
+        },
+        "Needs / Repair": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_repair"
+            }
+          ]
+        },
+        "Location": {
+          "type": "select",
+          "select": {
+            "name": "PRIVATE_SENTINEL_keg_location"
+          }
+        }
+      }
+    },
+    {
+      "object": "page",
+      "id": "keg-2",
+      "url": "https://www.notion.so/fixture-keg-2",
+      "properties": {
+        "Contents": {
+          "type": "title",
+          "title": [
+            {
+              "plain_text": "Elderberry Cream Ale"
+            }
+          ]
+        },
+        "Beverage Type": {
+          "type": "select",
+          "select": {
+            "name": "Beer"
+          }
+        },
+        "Recipe": {
+          "type": "relation",
+          "relation": [
+            {
+              "id": "recipe-2"
+            }
+          ]
+        },
+        "BJCP Style": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "29A Fruit Beer (base: 1C Cream Ale)"
+            }
+          ]
+        },
+        "ABV %": {
+          "type": "number",
+          "number": null
+        },
+        "Kegged Date": {
+          "type": "date",
+          "date": {
+            "start": "2026-10-02"
+          }
+        },
+        "Guest Notes": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "A fruited Cream Ale."
+            }
+          ]
+        },
+        "Notes": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_keg_notes"
+            }
+          ]
+        },
+        "Volume Left": {
+          "type": "number",
+          "number": 987.65
+        },
+        "Disposition": {
+          "type": "select",
+          "select": {
+            "name": "PRIVATE_SENTINEL_disposition"
+          }
+        },
+        "Quality": {
+          "type": "select",
+          "select": {
+            "name": "PRIVATE_SENTINEL_quality"
+          }
+        },
+        "Needs / Repair": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_repair"
+            }
+          ]
+        },
+        "Location": {
+          "type": "select",
+          "select": {
+            "name": "PRIVATE_SENTINEL_keg_location"
+          }
+        }
+      }
+    },
+    {
+      "object": "page",
+      "id": "keg-3",
+      "url": "https://www.notion.so/fixture-keg-3",
+      "properties": {
+        "Contents": {
+          "type": "title",
+          "title": [
+            {
+              "plain_text": "Nitro Milk Stout"
+            }
+          ]
+        },
+        "Beverage Type": {
+          "type": "select",
+          "select": {
+            "name": "Beer"
+          }
+        },
+        "Recipe": {
+          "type": "relation",
+          "relation": [
+            {
+              "id": "recipe-3"
+            }
+          ]
+        },
+        "BJCP Style": {
+          "type": "rich_text",
+          "rich_text": []
+        },
+        "ABV %": {
+          "type": "number",
+          "number": null
+        },
+        "Kegged Date": {
+          "type": "date",
+          "date": {
+            "start": "2026-08-30"
+          }
+        },
+        "Guest Notes": {
+          "type": "rich_text",
+          "rich_text": []
+        },
+        "Notes": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_keg_notes"
+            }
+          ]
+        },
+        "Volume Left": {
+          "type": "number",
+          "number": 987.65
+        },
+        "Disposition": {
+          "type": "select",
+          "select": {
+            "name": "PRIVATE_SENTINEL_disposition"
+          }
+        },
+        "Quality": {
+          "type": "select",
+          "select": {
+            "name": "PRIVATE_SENTINEL_quality"
+          }
+        },
+        "Needs / Repair": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_repair"
+            }
+          ]
+        },
+        "Location": {
+          "type": "select",
+          "select": {
+            "name": "PRIVATE_SENTINEL_keg_location"
+          }
+        }
+      }
+    },
+    {
+      "object": "page",
+      "id": "keg-9",
+      "url": "https://www.notion.so/fixture-keg-9",
+      "properties": {
+        "Contents": {
+          "type": "title",
+          "title": [
+            {
+              "plain_text": "Star San"
+            }
+          ]
+        },
+        "Beverage Type": {
+          "type": "select",
+          "select": {
+            "name": "Cleaner/Sanitizer"
+          }
+        },
+        "Recipe": {
+          "type": "relation",
+          "relation": []
+        },
+        "BJCP Style": {
+          "type": "rich_text",
+          "rich_text": []
+        },
+        "ABV %": {
+          "type": "number",
+          "number": null
+        },
+        "Kegged Date": {
+          "type": "date",
+          "date": null
+        },
+        "Guest Notes": {
+          "type": "rich_text",
+          "rich_text": []
+        },
+        "Notes": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_keg_notes"
+            }
+          ]
+        },
+        "Volume Left": {
+          "type": "number",
+          "number": 987.65
+        },
+        "Disposition": {
+          "type": "select",
+          "select": {
+            "name": "PRIVATE_SENTINEL_disposition"
+          }
+        },
+        "Quality": {
+          "type": "select",
+          "select": {
+            "name": "PRIVATE_SENTINEL_quality"
+          }
+        },
+        "Needs / Repair": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_repair"
+            }
+          ]
+        },
+        "Location": {
+          "type": "select",
+          "select": {
+            "name": "PRIVATE_SENTINEL_keg_location"
+          }
+        }
+      }
+    },
+    {
+      "object": "page",
+      "id": "keg-4",
+      "url": "https://www.notion.so/fixture-keg-4",
+      "properties": {
+        "Contents": {
+          "type": "title",
+          "title": [
+            {
+              "plain_text": "Cherry Seltzer"
+            }
+          ]
+        },
+        "Beverage Type": {
+          "type": "select",
+          "select": {
+            "name": "Non-alcoholic"
+          }
+        },
+        "Recipe": {
+          "type": "relation",
+          "relation": [
+            {
+              "id": "recipe-4"
+            }
+          ]
+        },
+        "BJCP Style": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "NA Seltzer"
+            }
+          ]
+        },
+        "ABV %": {
+          "type": "number",
+          "number": 0.0
+        },
+        "Kegged Date": {
+          "type": "date",
+          "date": {
+            "start": "2026-10-20"
+          }
+        },
+        "Guest Notes": {
+          "type": "rich_text",
+          "rich_text": []
+        },
+        "Notes": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_keg_notes"
+            }
+          ]
+        },
+        "Volume Left": {
+          "type": "number",
+          "number": 987.65
+        },
+        "Disposition": {
+          "type": "select",
+          "select": {
+            "name": "PRIVATE_SENTINEL_disposition"
+          }
+        },
+        "Quality": {
+          "type": "select",
+          "select": {
+            "name": "PRIVATE_SENTINEL_quality"
+          }
+        },
+        "Needs / Repair": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_repair"
+            }
+          ]
+        },
+        "Location": {
+          "type": "select",
+          "select": {
+            "name": "PRIVATE_SENTINEL_keg_location"
+          }
+        }
+      }
+    },
+    {
+      "object": "page",
+      "id": "keg-5",
+      "url": "https://www.notion.so/fixture-keg-5",
+      "properties": {
+        "Contents": {
+          "type": "title",
+          "title": [
+            {
+              "plain_text": "Cold Brew"
+            }
+          ]
+        },
+        "Beverage Type": {
+          "type": "select",
+          "select": {
+            "name": "Coffee"
+          }
+        },
+        "Recipe": {
+          "type": "relation",
+          "relation": []
+        },
+        "BJCP Style": {
+          "type": "rich_text",
+          "rich_text": []
+        },
+        "ABV %": {
+          "type": "number",
+          "number": 0
+        },
+        "Kegged Date": {
+          "type": "date",
+          "date": {
+            "start": "2026-10-25"
+          }
+        },
+        "Guest Notes": {
+          "type": "rich_text",
+          "rich_text": []
+        },
+        "Notes": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_keg_notes"
+            }
+          ]
+        },
+        "Volume Left": {
+          "type": "number",
+          "number": 987.65
+        },
+        "Disposition": {
+          "type": "select",
+          "select": {
+            "name": "PRIVATE_SENTINEL_disposition"
+          }
+        },
+        "Quality": {
+          "type": "select",
+          "select": {
+            "name": "PRIVATE_SENTINEL_quality"
+          }
+        },
+        "Needs / Repair": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_repair"
+            }
+          ]
+        },
+        "Location": {
+          "type": "select",
+          "select": {
+            "name": "PRIVATE_SENTINEL_keg_location"
+          }
+        }
+      }
+    },
+    {
+      "object": "page",
+      "id": "keg-6",
+      "url": "https://www.notion.so/fixture-keg-6",
+      "properties": {
+        "Contents": {
+          "type": "title",
+          "title": [
+            {
+              "plain_text": "Hazy Pale Ale"
+            }
+          ]
+        },
+        "Beverage Type": {
+          "type": "select",
+          "select": {
+            "name": "Beer"
+          }
+        },
+        "Recipe": {
+          "type": "relation",
+          "relation": [
+            {
+              "id": "recipe-1"
+            }
+          ]
+        },
+        "BJCP Style": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "18A Hazy Pale Ale"
+            }
+          ]
+        },
+        "ABV %": {
+          "type": "number",
+          "number": 5.4
+        },
+        "Kegged Date": {
+          "type": "date",
+          "date": {
+            "start": "2026-10-27"
+          }
+        },
+        "Guest Notes": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "Soft, juicy, new this week."
+            }
+          ]
+        },
+        "Notes": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_keg_notes"
+            }
+          ]
+        },
+        "Volume Left": {
+          "type": "number",
+          "number": 987.65
+        },
+        "Disposition": {
+          "type": "select",
+          "select": {
+            "name": "PRIVATE_SENTINEL_disposition"
+          }
+        },
+        "Quality": {
+          "type": "select",
+          "select": {
+            "name": "PRIVATE_SENTINEL_quality"
+          }
+        },
+        "Needs / Repair": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_repair"
+            }
+          ]
+        },
+        "Location": {
+          "type": "select",
+          "select": {
+            "name": "PRIVATE_SENTINEL_keg_location"
+          }
+        }
+      }
+    }
+  ],
+  "has_more": false
+}
