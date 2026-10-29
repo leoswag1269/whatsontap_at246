@@ -1,0 +1,354 @@
+{
+  "object": "list",
+  "results": [
+    {
+      "object": "page",
+      "id": "recipe-1",
+      "url": "https://www.notion.so/fixture-recipe-1",
+      "properties": {
+        "Name": {
+          "type": "title",
+          "title": [
+            {
+              "plain_text": "Recipe 1"
+            }
+          ]
+        },
+        "BJCP Style": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "21A American IPA"
+            }
+          ]
+        },
+        "ABV %": {
+          "type": "number",
+          "number": 5.9
+        },
+        "IBU": {
+          "type": "number",
+          "number": 40
+        },
+        "OG": {
+          "type": "number",
+          "number": 1.058
+        },
+        "FG": {
+          "type": "number",
+          "number": 1.012
+        },
+        "SRM": {
+          "type": "number",
+          "number": 7
+        },
+        "Share With": {
+          "type": "multi_select",
+          "multi_select": [
+            {
+              "name": "PRIVATE_SENTINEL_share_with"
+            }
+          ]
+        },
+        "Gemini URL": {
+          "type": "url",
+          "url": "https://gemini.example/PRIVATE_SENTINEL_gemini_url"
+        },
+        "Gemini ID": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_gemini_id"
+            }
+          ]
+        },
+        "Creator": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_creator"
+            }
+          ]
+        },
+        "Source URL": {
+          "type": "url",
+          "url": "https://example.com/PRIVATE_SENTINEL_source_url"
+        },
+        "Flags": {
+          "type": "multi_select",
+          "multi_select": [
+            {
+              "name": "PRIVATE_SENTINEL_flags"
+            }
+          ]
+        },
+        "Calories": {
+          "type": "number",
+          "number": 424242
+        }
+      }
+    },
+    {
+      "object": "page",
+      "id": "recipe-2",
+      "url": "https://www.notion.so/fixture-recipe-2",
+      "properties": {
+        "Name": {
+          "type": "title",
+          "title": [
+            {
+              "plain_text": "Recipe 2"
+            }
+          ]
+        },
+        "BJCP Style": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "1C Cream Ale"
+            }
+          ]
+        },
+        "ABV %": {
+          "type": "number",
+          "number": 5.0
+        },
+        "IBU": {
+          "type": "number",
+          "number": 18
+        },
+        "OG": {
+          "type": "number",
+          "number": 1.05
+        },
+        "FG": {
+          "type": "number",
+          "number": 1.01
+        },
+        "SRM": {
+          "type": "number",
+          "number": 4
+        },
+        "Share With": {
+          "type": "multi_select",
+          "multi_select": [
+            {
+              "name": "PRIVATE_SENTINEL_share_with"
+            }
+          ]
+        },
+        "Gemini URL": {
+          "type": "url",
+          "url": "https://gemini.example/PRIVATE_SENTINEL_gemini_url"
+        },
+        "Gemini ID": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_gemini_id"
+            }
+          ]
+        },
+        "Creator": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_creator"
+            }
+          ]
+        },
+        "Source URL": {
+          "type": "url",
+          "url": "https://example.com/PRIVATE_SENTINEL_source_url"
+        },
+        "Flags": {
+          "type": "multi_select",
+          "multi_select": [
+            {
+              "name": "PRIVATE_SENTINEL_flags"
+            }
+          ]
+        },
+        "Calories": {
+          "type": "number",
+          "number": 424242
+        }
+      }
+    },
+    {
+      "object": "page",
+      "id": "recipe-3",
+      "url": "https://www.notion.so/fixture-recipe-3",
+      "properties": {
+        "Name": {
+          "type": "title",
+          "title": [
+            {
+              "plain_text": "Recipe 3"
+            }
+          ]
+        },
+        "BJCP Style": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "16A Sweet Stout"
+            }
+          ]
+        },
+        "ABV %": {
+          "type": "number",
+          "number": 4.8
+        },
+        "IBU": {
+          "type": "number",
+          "number": 25
+        },
+        "OG": {
+          "type": "number",
+          "number": 1.048
+        },
+        "FG": {
+          "type": "number",
+          "number": 1.016
+        },
+        "SRM": {
+          "type": "number",
+          "number": 35
+        },
+        "Share With": {
+          "type": "multi_select",
+          "multi_select": [
+            {
+              "name": "PRIVATE_SENTINEL_share_with"
+            }
+          ]
+        },
+        "Gemini URL": {
+          "type": "url",
+          "url": "https://gemini.example/PRIVATE_SENTINEL_gemini_url"
+        },
+        "Gemini ID": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_gemini_id"
+            }
+          ]
+        },
+        "Creator": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_creator"
+            }
+          ]
+        },
+        "Source URL": {
+          "type": "url",
+          "url": "https://example.com/PRIVATE_SENTINEL_source_url"
+        },
+        "Flags": {
+          "type": "multi_select",
+          "multi_select": [
+            {
+              "name": "PRIVATE_SENTINEL_flags"
+            }
+          ]
+        },
+        "Calories": {
+          "type": "number",
+          "number": 424242
+        }
+      }
+    },
+    {
+      "object": "page",
+      "id": "recipe-4",
+      "url": "https://www.notion.so/fixture-recipe-4",
+      "properties": {
+        "Name": {
+          "type": "title",
+          "title": [
+            {
+              "plain_text": "Recipe 4"
+            }
+          ]
+        },
+        "BJCP Style": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "31A Alternative Grain Beer"
+            }
+          ]
+        },
+        "ABV %": {
+          "type": "number",
+          "number": 0.0
+        },
+        "IBU": {
+          "type": "number",
+          "number": 0
+        },
+        "OG": {
+          "type": "number",
+          "number": null
+        },
+        "FG": {
+          "type": "number",
+          "number": null
+        },
+        "SRM": {
+          "type": "number",
+          "number": null
+        },
+        "Share With": {
+          "type": "multi_select",
+          "multi_select": [
+            {
+              "name": "PRIVATE_SENTINEL_share_with"
+            }
+          ]
+        },
+        "Gemini URL": {
+          "type": "url",
+          "url": "https://gemini.example/PRIVATE_SENTINEL_gemini_url"
+        },
+        "Gemini ID": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_gemini_id"
+            }
+          ]
+        },
+        "Creator": {
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "plain_text": "PRIVATE_SENTINEL_creator"
+            }
+          ]
+        },
+        "Source URL": {
+          "type": "url",
+          "url": "https://example.com/PRIVATE_SENTINEL_source_url"
+        },
+        "Flags": {
+          "type": "multi_select",
+          "multi_select": [
+            {
+              "name": "PRIVATE_SENTINEL_flags"
+            }
+          ]
+        },
+        "Calories": {
+          "type": "number",
+          "number": 424242
+        }
+      }
+    }
+  ],
+  "has_more": false
+}
