@@ -390,7 +390,40 @@ class FailureAndSafetyTests(unittest.TestCase):
             for fn in files:
                 if fn.endswith((".json", ".py", ".md", ".yml", ".html")):
                     with open(os.path.join(base, fn), encoding="utf-8") as f:
-                        self.assertIsNone(pat.search(f.read()), os.path.join(base, fn))
+                        body = f.read()
+                    # A pinned action (`uses: owner/repo@<40-hex commit SHA>`) is public, not an ID.
+                    body = re.sub(r"uses:\s*\S+@[0-9a-f]{40}", "uses: PINNED", body)
+                    self.assertIsNone(pat.search(body), os.path.join(base, fn))
+
+
+class PageAndWorkflowTests(unittest.TestCase):
+    def read(self, *parts):
+        with open(os.path.join(ROOT, *parts), encoding="utf-8") as f:
+            return f.read()
+
+    def test_page_renders_from_json_with_no_hardcoded_beers(self):
+        html = self.read("index.html")
+        self.assertNotIn("TAP_LIST", html)
+        self.assertNotIn("BOTTLE_LIST", html)
+        self.assertIn("data/taplist.json", html)
+        self.assertIn("data/bottles.json", html)
+
+    def test_page_escapes_data_and_does_not_use_viewer_date(self):
+        html = self.read("index.html")
+        self.assertIn("function esc(", html)
+        self.assertNotIn("new Date()", html)
+
+    def test_workflow_schedule_permissions_and_secret_handling(self):
+        wf = self.read(".github", "workflows", "sync.yml")
+        self.assertRegex(wf, r"(?m)^\s*schedule:")
+        self.assertRegex(wf, r"(?m)^\s*workflow_dispatch:")
+        self.assertRegex(wf, r"(?m)^permissions:\n  contents: write\n(?!  )")
+        self.assertEqual(re.findall(r"\$\{\{\s*([^}]*?)\s*\}\}", wf),
+                         ["secrets.NOTION_TOKEN", "vars.TAPS_DB_ID", "vars.KEGS_DB_ID",
+                          "vars.RECIPES_DB_ID", "vars.BOTTLES_DB_ID"])
+        for uses in re.findall(r"uses:\s*(\S+)", wf):
+            self.assertRegex(uses, r"@[0-9a-f]{40}$")  # pinned to a full commit SHA
+        self.assertIn("git commit -F", wf)  # message never interpolated into the shell
 
 
 if __name__ == "__main__":
