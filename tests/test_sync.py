@@ -419,8 +419,8 @@ class PageAndWorkflowTests(unittest.TestCase):
         self.assertRegex(wf, r"(?m)^\s*workflow_dispatch:")
         self.assertRegex(wf, r"(?m)^permissions:\n  contents: write\n(?!  )")
         self.assertEqual(re.findall(r"\$\{\{\s*([^}]*?)\s*\}\}", wf),
-                         ["secrets.NOTION_TOKEN", "vars.TAPS_DB_ID", "vars.KEGS_DB_ID",
-                          "vars.RECIPES_DB_ID", "vars.BOTTLES_DB_ID"])
+                         ["secrets.NOTION_TOKEN", "secrets.TAPS_DB_ID", "secrets.KEGS_DB_ID",
+                          "secrets.RECIPES_DB_ID", "secrets.BOTTLES_DB_ID"])
         for uses in re.findall(r"uses:\s*(\S+)", wf):
             self.assertRegex(uses, r"@[0-9a-f]{40}$")  # pinned to a full commit SHA
         self.assertIn("git commit -F", wf)  # message never interpolated into the shell
