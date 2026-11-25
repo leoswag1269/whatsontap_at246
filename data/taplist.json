@@ -5,6 +5,7 @@
       "tap": "Keezer 1",
       "name": "Azacca IPA",
       "kegged": "2026-06",
+      "description": "Azacca IPA - the base of this beer was a BUZZ Big Brew Day IPA. It was singularly hopped with azacca for bittering to 30 IBU and dry hopped with 1oz. I later added 3ml of an Azacca concentrate that comes through in the aroma. This beer will be succeeded by a NZ Pils",
       "tags": [
         "Homebrew"
       ]
@@ -12,7 +13,39 @@
     {
       "tap": "Keezer 2",
       "name": "Festbier",
+      "style": "Festbier",
+      "bjcp": "4B",
+      "abv": {
+        "value": 6.2,
+        "source": "measured"
+      },
+      "ibu": {
+        "value": 25,
+        "source": "recipe"
+      },
+      "og": {
+        "value": 1.058,
+        "source": "recipe"
+      },
+      "fg": {
+        "value": 1.011,
+        "source": "recipe"
+      },
+      "srm": {
+        "value": 10,
+        "source": "recipe"
+      },
       "kegged": "2026-09",
+      "description": "Festbier - robust in strength and flavor, make sure the CO2 is on and carbonation is good",
+      "tags": [
+        "Homebrew"
+      ]
+    },
+    {
+      "tap": "Keezer 3",
+      "name": "Dry Irish stout",
+      "kegged": "2025-02",
+      "description": "Dry Irish stout, kegged Feb 2025 and still good. Nearly done, so get it while it lasts. Yell at Leo if nothing pours, that means he never moved it!",
       "tags": [
         "Homebrew"
       ]
@@ -25,14 +58,38 @@
         "source": "measured"
       },
       "kegged": "2026-06",
+      "description": "Non-alcoholic cherry seltzer. It's caffeinated, so go easy for kids or late in the evening.",
       "tags": [
         "NA"
       ]
     },
     {
       "tap": "Beermeister",
-      "name": "Dry Irish stout",
-      "kegged": "2025-02",
+      "name": "Nitro Coffee & Vanilla English Dark Mild (dark roast coffee, no vanilla)",
+      "style": "Dark Mild",
+      "bjcp": "13A",
+      "abv": {
+        "value": 3,
+        "source": "measured"
+      },
+      "ibu": {
+        "value": 17,
+        "source": "recipe"
+      },
+      "og": {
+        "value": 1.045,
+        "source": "recipe"
+      },
+      "fg": {
+        "value": 1.022,
+        "source": "recipe"
+      },
+      "srm": {
+        "value": 25,
+        "source": "recipe"
+      },
+      "kegged": "2026-10",
+      "description": "Session-strength English dark mild (~3% ABV) conditioned on dark-roast coffee, no vanilla. Served on nitro, so it's smooth and light-bodied.",
       "tags": [
         "Nitro",
         "Homebrew"
@@ -42,6 +99,7 @@
       "tap": "Picnic P5",
       "name": "Belgian Dark Strong (barrel-aged)",
       "kegged": "2024-09",
+      "description": "Belgian Dark Strong - still very good 2+ years aged",
       "tags": [
         "Homebrew"
       ]
