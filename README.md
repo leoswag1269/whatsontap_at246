@@ -31,15 +31,17 @@ The full spec is in [`docs/2026-10-16-home-tap-sync-prd.md`](docs/2026-10-16-hom
 
 1. **Notion integration.** Create an internal integration with the **Read content** capability only.
    Share exactly four databases with it: Taps, Kegs, Recipes, Bottles (not LifeOS as a whole).
-2. **GitHub secret and variables.** In the repo go to **Settings → Secrets and variables → Actions**.
+2. **GitHub secrets.** In the repo go to **Settings → Secrets and variables → Actions → Secrets**.
+   All five are *secrets*, not variables: this repo is public, and GitHub prints variables in
+   plain text in the Actions logs but masks secrets.
 
-   | Where | Name | Value |
-   |---|---|---|
-   | Secrets | `NOTION_TOKEN` | the integration token |
-   | Variables | `TAPS_DB_ID` | ID of the Taps database |
-   | Variables | `KEGS_DB_ID` | ID of the Kegs database |
-   | Variables | `RECIPES_DB_ID` | ID of the Recipes database |
-   | Variables | `BOTTLES_DB_ID` | ID of the Bottles database |
+   | Name | Value |
+   |---|---|
+   | `NOTION_TOKEN` | the integration token |
+   | `TAPS_DB_ID` | ID of the Taps database |
+   | `KEGS_DB_ID` | ID of the Kegs database |
+   | `RECIPES_DB_ID` | ID of the Recipes database |
+   | `BOTTLES_DB_ID` | ID of the Bottles database |
 
    To find a database ID, open the database as a full page in Notion and copy the 32-character
    code in the address, between the last `/` and the `?`. Paste it straight into GitHub.
@@ -78,7 +80,7 @@ page URL or ID. A test checks this on every run.
 ## When something goes wrong
 
 - **Red X on a run in the Actions tab** (GitHub also emails me): open the run and read the last
-  step. Common causes: a database wasn't shared with the integration, a variable is missing or
+  step. Common causes: a database wasn't shared with the integration, a secret is missing or
   mistyped, or Notion was briefly down. Fix it and click **Run workflow**. The site is fine in the meantime.
 - **Site says "Nothing's pouring"**: no keg is assigned to a tap in Notion, or `data/taplist.json`
   doesn't exist yet (run the sync once).

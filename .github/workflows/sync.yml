@@ -26,10 +26,12 @@ jobs:
       - name: Sync from Notion
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-          TAPS_DB_ID: ${{ vars.TAPS_DB_ID }}
-          KEGS_DB_ID: ${{ vars.KEGS_DB_ID }}
-          RECIPES_DB_ID: ${{ vars.RECIPES_DB_ID }}
-          BOTTLES_DB_ID: ${{ vars.BOTTLES_DB_ID }}
+          # Stored as secrets (not variables) so the IDs are masked in this
+          # repo's public Actions logs.
+          TAPS_DB_ID: ${{ secrets.TAPS_DB_ID }}
+          KEGS_DB_ID: ${{ secrets.KEGS_DB_ID }}
+          RECIPES_DB_ID: ${{ secrets.RECIPES_DB_ID }}
+          BOTTLES_DB_ID: ${{ secrets.BOTTLES_DB_ID }}
         run: python3 scripts/sync.py --message-file "$RUNNER_TEMP/commit-message.txt"
 
       # The message file exists only when guest-visible content changed.
