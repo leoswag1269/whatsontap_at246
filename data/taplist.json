@@ -1,0 +1,50 @@
+{
+  "updated": "2026-11-25",
+  "taps": [
+    {
+      "tap": "Keezer 1",
+      "name": "Azacca IPA",
+      "kegged": "2026-06",
+      "tags": [
+        "Homebrew"
+      ]
+    },
+    {
+      "tap": "Keezer 2",
+      "name": "Festbier",
+      "kegged": "2026-09",
+      "tags": [
+        "Homebrew"
+      ]
+    },
+    {
+      "tap": "Keezer 4",
+      "name": "Non-alcoholic cherry seltzer (caffeinated)",
+      "abv": {
+        "value": 0,
+        "source": "measured"
+      },
+      "kegged": "2026-06",
+      "tags": [
+        "NA"
+      ]
+    },
+    {
+      "tap": "Beermeister",
+      "name": "Dry Irish stout",
+      "kegged": "2025-02",
+      "tags": [
+        "Nitro",
+        "Homebrew"
+      ]
+    },
+    {
+      "tap": "Picnic P5",
+      "name": "Belgian Dark Strong (barrel-aged)",
+      "kegged": "2024-09",
+      "tags": [
+        "Homebrew"
+      ]
+    }
+  ]
+}
